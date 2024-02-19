@@ -1,0 +1,24 @@
+name: devops test 
+on: 
+  push: 
+    branches: [ main ]
+jobs: 
+  deploy: 
+    name: Deploy to EC2
+    runs-on: ubuntu-latest
+    
+    steps: 
+    - name: get code from github
+      uses: appleboy/ssh-action@v1.0.3
+      with:
+        host: ${{ secrets.REMOTE_HOST }}
+        username: ${{ secrets.REMOTE_USERNAME }}
+        key: ${{ secrets.KEY }}
+        port: 22
+        script: |
+          sudo rm -rf devops1
+          git clone https://github.com/thanks9807/devops1
+          sudo mv -f ./devops1/*.html /var/www/html
+        
+        
+        
