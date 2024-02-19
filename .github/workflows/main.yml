@@ -23,7 +23,7 @@ jobs:
       with:
         ref: main
     - run: ls -al
-    - run: cat ./checkout.yml
+    - run: cat ./playbook.yml
         
     - name: Run playbook
       uses: dawidd6/action-ansible-playbook@v2
