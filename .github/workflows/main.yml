@@ -11,8 +11,8 @@ jobs:
     - name: get code from github
       uses: appleboy/ssh-action@1.0.3
       with:
-        host: 43.202.50.215
-        username: ubuntu
+        host: ${{ secrets.REMOTE_HOST }}
+        username: ${{ secrets.REMOTE_USERNAME }}
         key: ${{ secrets.KEY }}
         port: 22
         script: |
