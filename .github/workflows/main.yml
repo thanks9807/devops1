@@ -23,7 +23,7 @@ jobs:
       with:
         ref: main
     - run: ls -al
-    - run: cat .github/workflows/checkout.yml
+    - run: cat ./checkout.yml
         
     - name: Run playbook
       uses: dawidd6/action-ansible-playbook@v2
