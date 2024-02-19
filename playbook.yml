@@ -1,0 +1,8 @@
+- hosts: [43.202.50.215]
+  tasks:
+  - name: "Insatll nginx"
+    shell: |
+      yum update -y
+      yum install -y nginx
+      systemctl restart nginx
+    become: yes
