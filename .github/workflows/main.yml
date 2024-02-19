@@ -23,11 +23,17 @@ jobs:
     - name: Run playbook
       uses: dawidd6/action-ansible-playbook@v2
       with:
+        script: |
+          sudo rm -rf devops1
+          git clone https://github.com/thanks9807/devops1
     # Required, playbook filepath
         playbook: playbook.yml
     # Optional, directory where playbooks live
-        directory: ./
+        directory: ./devops1/
         key: ${{ secrets.KEY }}
+        inventory: |
+          [all]
+          ${{ secrets.REMOTE_HOST }} ansible_ssh_user=ubuntu
           
     
   
