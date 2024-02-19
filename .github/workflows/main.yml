@@ -19,6 +19,23 @@ jobs:
           sudo rm -rf devops1
           git clone https://github.com/thanks9807/devops1
           sudo mv -f ./devops1/*.html /var/www/html
-        
-        
-        
+          
+    - name: Run playbook
+      uses: dawidd6/action-ansible-playbook@v2
+      with:
+    # Required, playbook filepath
+        playbook: playbook.yml
+    # Optional, directory where playbooks live
+        directory: ./
+        # Optional, ansible configuration file content (ansible.cfg)
+        configuration: |
+          [defaults]
+          callbacks_enabled = ansible.posix.profile_tasks, ansible.posix.timer
+          stdout_callback = yaml
+          nocows = false
+          # Optional, SSH private key
+          key: ${{ secrets.KEY }}
+          
+    
+  
+  
